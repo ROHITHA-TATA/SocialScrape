@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Data Fetcher</title>
+</head>
+<body>
+    <h1>YouTube Data Fetcher</h1>
+    <form id="data-fetch-form">
+        <label for="data-type">Select Data Type:</label>
+        <select id="data-type" name="data-type">
+            <option value="videoDetails">Description</option>
+            <option value="comments">Comments</option>
+        </select>
+        <br><br>
+        <label for="video-url">YouTube Video URL:</label>
+        <input type="text" id="video-url" name="video-url" placeholder="https://www.youtube.com/watch?v=example">
+        <br><br>
+        <button type="submit">Fetch Data</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('data-fetch-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const dataType = document.getElementById('data-type').value;
+            const videoUrl = document.getElementById('video-url').value;
+            // Send the data to your backend server
+            fetch('/fetch-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ dataType, videoUrl })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('results').innerHTML = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
+</body>
+</html>
