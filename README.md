@@ -74,15 +74,6 @@ pip install requests python-dotenv instaloader moviepy openai whisper os shutil 
   python main.py --platform facebook --user_id 123456789
   ```
 
-## Contributing
-If you’d like to contribute to SocialScrape, feel free to fork the repository and submit a pull request with your improvements.
-
-## License
-This project is licensed under the MIT License.
-
-## Contact
-For any issues or suggestions, feel free to reach out or open an issue on GitHub.
-
 ---
 
 Enjoy using **SocialScrape**!
